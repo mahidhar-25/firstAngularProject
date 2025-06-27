@@ -5,11 +5,9 @@
   >
     <img
       class="w-8 object-contain rounded-full shadow-[0_1px_8px_rgba(0,0,0,0.3)]"
-      [src]="imagePath()"
-      alt="{{ selectedUser().name }} Avatar"
+      [src]="avatar"
+      alt="{{ name }} Avatar"
     />
-    <span class="m-0 p-0 text-[0.8rem] font-normal">{{
-      selectedUser().name
-    }}</span>
+    <span class="m-0 p-0 text-[0.8rem] font-normal">{{ name }}</span>
   </button>
 </div>

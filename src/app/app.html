@@ -3,7 +3,21 @@
   class="w-[90%] max-w-[50rem] my-10 mx-auto grid grid-flow-row gap-8 md:my-16 md:grid-cols-[1fr_3fr]"
 >
   <ul class="list-none m-0 p-0 flex gap-2 overflow-auto md:flex-col" id="users">
-    <app-user></app-user>
+    <ng-template
+      ngFor
+      let-user
+      [ngForOf]="users"
+      let-i="index"
+      [ngForTrackBy]="trackByFn"
+    >
+      <li class="w-full min-w-[10rem]">
+        <app-user
+          [avatar]="user.avatar"
+          [id]="user.id"
+          [name]="user.name"
+        ></app-user>
+      </li>
+    </ng-template>
   </ul>
 
   <!-- Optional Fallback Message -->
