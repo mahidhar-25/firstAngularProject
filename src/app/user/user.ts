@@ -7,6 +7,7 @@ import {
   output,
 } from '@angular/core';
 import { DUMMY_USERS } from '../dummy-user';
+import { User } from './user.model';
 
 @Component({
   selector: 'app-user',
@@ -20,9 +21,10 @@ export class UserComponenet {
   // @Input({ required: true }) name!: string;
   // @Input({ required: true }) id!: string;
 
-  avatar = input.required<string>();
-  name = input.required<string>();
-  id = input.required<string>();
+  user = input.required<User>();
+  avatar = computed(() => this.user().avatar);
+  name = computed(() => this.user().name);
+  id = computed(() => this.user().id);
 
   //@Output() selectedId:string = new EventEmitter<string>();
   selectedId = output<string>();

@@ -3,7 +3,8 @@
   class="w-[90%] max-w-[50rem] my-10 mx-auto grid grid-flow-row gap-8 md:my-16 md:grid-cols-[1fr_3fr]"
 >
   <ul class="list-none m-0 p-0 flex gap-2 overflow-auto md:flex-col" id="users">
-    <ng-template
+    <!-- // Using ngFor with trackBy for better performance -->
+    <!-- <ng-template
       ngFor
       let-user
       [ngForOf]="users"
@@ -11,23 +12,51 @@
       [ngForTrackBy]="trackByFn"
     >
       <li class="w-full min-w-[10rem]">
-        <app-user
-          [avatar]="user.avatar"
-          [id]="user.id"
-          [name]="user.name"
-          (selectedId)="onSelectUser($event)"
-        ></app-user>
+        <app-user [user]="user" (selectedId)="onSelectUser($event)"></app-user>
       </li>
-    </ng-template>
+    </ng-template> -->
+    <!-- // using for loop with track -->
+
+    <!-- There is another way of doing for loop in Angular, which is using the `*ngFor` directive. -->
+    <!-- <li *ngFor="let user of users" class="w-full min-w-[10rem]">
+      <app-user [user]="user" (selectedId)="onSelectUser($event)"></app-user>
+    </li> -->
+    @for (user of users; track user.id) {
+    <li class="w-full min-w-[10rem]">
+      <app-user [user]="user" (selectedId)="onSelectUser($event)"></app-user>
+    </li>
+    }
   </ul>
 
-  <!-- Optional Fallback Message -->
-  <!-- <p
+  <!-- <app-tasks
+    *ngIf="selectedUser"
+    ;
+    else
+    fallback
+    [selectedUser]="selectedUser ? selectedUser.name : 'No User Selected'"
+  ></app-tasks>
+
+  <<ng-template #fallback>
+    <p
+      id="fallback"
+      class="font-bold text-[1.15rem] m-0 text-center md:text-left md:text-[1.5rem]"
+    >
+      Select user to show tasks.
+    </p>
+  </ng-template> -->
+
+  @if (selectedUser){
+  <app-tasks
+    [selectedUser]="selectedUser ? selectedUser.name : 'No User Selected'"
+  ></app-tasks>
+  } @else {
+  <p
     id="fallback"
     class="font-bold text-[1.15rem] m-0 text-center md:text-left md:text-[1.5rem]"
   >
-    No users found.
-  </p> -->
+    Select user to show tasks.
+  </p>
+  }
 </main>
 
 <router-outlet></router-outlet>
