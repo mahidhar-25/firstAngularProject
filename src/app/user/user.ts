@@ -1,4 +1,4 @@
-import { Component, computed, signal, Input } from '@angular/core';
+import { Component, computed, signal, Input, input } from '@angular/core';
 import { DUMMY_USERS } from '../dummy-user';
 
 @Component({
@@ -9,8 +9,12 @@ import { DUMMY_USERS } from '../dummy-user';
 })
 // !using this this will have some value
 export class UserComponenet {
-  @Input() avatar!: string;
-  @Input() name!: string;
-  @Input() id!: string;
+  // @Input({ required: true }) avatar!: string;
+  // @Input({ required: true }) name!: string;
+  // @Input({ required: true }) id!: string;
+
+  avatar = input.required<string>();
+  name = input.required<string>();
+  id = input.required<string>();
   onSelectUser() {}
 }
