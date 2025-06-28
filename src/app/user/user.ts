@@ -1,4 +1,11 @@
-import { Component, computed, signal, Input, input } from '@angular/core';
+import {
+  Component,
+  computed,
+  signal,
+  Input,
+  input,
+  output,
+} from '@angular/core';
 import { DUMMY_USERS } from '../dummy-user';
 
 @Component({
@@ -16,5 +23,10 @@ export class UserComponenet {
   avatar = input.required<string>();
   name = input.required<string>();
   id = input.required<string>();
-  onSelectUser() {}
+
+  //@Output() selectedId:string = new EventEmitter<string>();
+  selectedId = output<string>();
+  onSelectUser() {
+    this.selectedId.emit(this.id());
+  }
 }

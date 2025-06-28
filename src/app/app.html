@@ -15,6 +15,7 @@
           [avatar]="user.avatar"
           [id]="user.id"
           [name]="user.name"
+          (selectedId)="onSelectUser($event)"
         ></app-user>
       </li>
     </ng-template>

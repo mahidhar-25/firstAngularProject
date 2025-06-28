@@ -17,4 +17,8 @@ export class App {
   trackByFn(index: number, user: { id: string }) {
     return user.id;
   }
+
+  onSelectUser(id: string) {
+    console.log('this id is selected' + id);
+  }
 }
