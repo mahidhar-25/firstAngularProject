@@ -7,11 +7,11 @@ import { CommonModule, NgFor } from '@angular/common';
 import { Tasks } from './tasks/tasks';
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, UserComponenet, CommonModule, Tasks],
+  standalone: false,
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
-export class App {
+export class AppComponent {
   protected title = 'firstProject';
   users = DUMMY_USERS;
   selectedUserId: string = '';
