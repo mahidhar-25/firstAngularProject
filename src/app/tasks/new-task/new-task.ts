@@ -1,30 +1,34 @@
-import { Component, output } from '@angular/core';
+import { Component, inject, input, output } from '@angular/core';
 import { TaskType } from '../task/task.model';
 import { FormsModule } from '@angular/forms';
+import { TasksService } from '../tasks.service';
 @Component({
   selector: 'app-new-task',
   imports: [FormsModule],
   templateUrl: './new-task.html',
 })
 export class NewTaskComponent {
-  closeDailog = output<boolean>();
-  addTask = output<Omit<TaskType, 'userId'>>();
-
+  userId = input.required<string>();
+  closeDailog = output<void>();
+  private tasksService = inject(TasksService);
   enteredTitle = '';
   enteredSummary = '';
   enteredDueDate = '';
   onCancel() {
     console.log('new task cancel');
-    this.closeDailog.emit(true);
+    this.closeDailog.emit();
   }
 
   onCreate() {
-    this.addTask.emit({
-      id: new Date().toISOString(),
-      title: this.enteredTitle,
-      summary: this.enteredSummary,
-      dueDate: this.enteredDueDate,
-    });
-    this.closeDailog.emit(true);
+    this.tasksService.addTask(
+      {
+        id: new Date().toISOString(),
+        title: this.enteredTitle,
+        summary: this.enteredSummary,
+        dueDate: this.enteredDueDate,
+      },
+      this.userId()
+    );
+    this.closeDailog.emit();
   }
 }

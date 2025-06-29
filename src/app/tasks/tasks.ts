@@ -3,6 +3,7 @@ import { TaskType } from './task/task.model';
 import { TaskComponment } from './task/task';
 import { User } from '../user/user.model';
 import { NewTaskComponent } from './new-task/new-task';
+import { TasksService } from './tasks.service';
 
 @Component({
   selector: 'app-tasks',
@@ -11,47 +12,15 @@ import { NewTaskComponent } from './new-task/new-task';
   styleUrl: './tasks.css',
 })
 export class Tasks {
-  onComplete(taskId: String) {
-    this.tasks.set(this.tasks().filter((task) => task.id !== taskId));
+  constructor(private tasksService: TasksService) {}
+  onComplete(taskId: string) {
+    this.tasksService.completeTask(taskId);
   }
   isAddingTask = false;
   selectedUser = input.required<User>();
-  tasks = signal<TaskType[]>([
-    {
-      id: '1',
-      userId: 'u1',
-      title: 'Task 1',
-      summary: 'Summary 1',
-      dueDate: '2023-08-01',
-    },
-    {
-      id: '2',
-      userId: 'u2',
-      title: 'Task 2',
-      summary:
-        'djfkngkj kjng vkdjfg kjnfdg kjsdf gjksdgf vkjsdfg vkdfgjkng sdkfjgn kdskjg sdkgkjsdjb n',
-      dueDate: '2023-08-02',
-    },
-    {
-      id: '3',
-      userId: 'u2',
-      title: 'Task 3',
-      summary: 'Summary 3',
-      dueDate: '2023-08-03',
-    },
-    {
-      id: '4',
-      userId: 'u3',
-      title: 'Task 4',
-      summary: 'Summary 4',
-      dueDate: '2023-08-04',
-    },
-  ]);
 
   get selectedUserTasks() {
-    return this.tasks().filter(
-      (task) => task.userId === this.selectedUser().id
-    );
+    return this.tasksService.getUserTasks(this.selectedUser().id);
   }
   // get filteredTasks() {
   //   return this.tasks().filter((task) => task.startsWith(this.selectedUser()));
@@ -60,17 +29,8 @@ export class Tasks {
   onOpenAddTask() {
     this.isAddingTask = true;
   }
-  onAddTask(newTask: Omit<TaskType, 'userId'>) {
-    this.isAddingTask = false;
-    this.tasks.update((tasks) => [
-      ...tasks,
-      { ...newTask, userId: this.selectedUser().id },
-    ]);
-    // Logic to add a new task
-  }
 
-  oncloseDailog(close: boolean) {
-    console.log(close);
-    this.isAddingTask = !close;
+  oncloseDailog() {
+    this.isAddingTask = false;
   }
 }

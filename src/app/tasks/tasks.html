@@ -1,9 +1,6 @@
 @if(isAddingTask){
 <div>
-  <app-new-task
-    (closeDailog)="oncloseDailog($event)"
-    (addTask)="onAddTask($event)"
-  />
+  <app-new-task (closeDailog)="oncloseDailog()" [userId]="selectedUser().id" />
 </div>
 }@else {
 <section
@@ -32,7 +29,7 @@
   >
     @for (task of selectedUserTasks; track $index) {
     <li>
-      <app-task [task]="task" (complete)="onComplete($event)"></app-task>
+      <app-task [task]="task"></app-task>
     </li>
     }
     <!-- <app-task> goes here -->
