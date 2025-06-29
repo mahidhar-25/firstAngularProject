@@ -1,15 +1,13 @@
-import { Component, input, signal } from '@angular/core';
-import { TaskType } from './task/task.model';
-import { TaskComponment } from './task/task';
+import { Component, input } from '@angular/core';
 import { User } from '../user/user.model';
-import { NewTaskComponent } from './new-task/new-task';
 import { TasksService } from './tasks.service';
 
 @Component({
   selector: 'app-tasks',
-  imports: [TaskComponment, NewTaskComponent],
+  //imports: [TaskComponment, NewTaskComponent],
   templateUrl: './tasks.html',
   styleUrl: './tasks.css',
+  standalone: false,
 })
 export class Tasks {
   constructor(private tasksService: TasksService) {}

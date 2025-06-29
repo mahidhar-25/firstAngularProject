@@ -1,12 +1,11 @@
-import { Component, inject, input, output } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { TaskType } from './task.model';
-import { CardComponent } from '../../shared/card/card';
-import { DatePipe } from '@angular/common';
 import { TasksService } from '../tasks.service';
 @Component({
   selector: 'app-task',
-  imports: [CardComponent, DatePipe],
+  //imports: [CardComponent, DatePipe],
   templateUrl: './task.html',
+  standalone: false,
 })
 export class TaskComponment {
   task = input.required<TaskType>();

@@ -1,11 +1,10 @@
 import { Component, inject, input, output } from '@angular/core';
-import { TaskType } from '../task/task.model';
-import { FormsModule } from '@angular/forms';
 import { TasksService } from '../tasks.service';
 @Component({
   selector: 'app-new-task',
-  imports: [FormsModule],
+  //imports: [FormsModule],
   templateUrl: './new-task.html',
+  standalone: false,
 })
 export class NewTaskComponent {
   userId = input.required<string>();

@@ -1,10 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from './header/header';
-import { UserComponenet } from './user/user';
 import { DUMMY_USERS } from './dummy-user';
-import { CommonModule, NgFor } from '@angular/common';
-import { Tasks } from './tasks/tasks';
 @Component({
   selector: 'app-root',
   standalone: false,

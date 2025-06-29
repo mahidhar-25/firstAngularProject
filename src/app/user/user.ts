@@ -1,19 +1,11 @@
-import {
-  Component,
-  computed,
-  signal,
-  Input,
-  input,
-  output,
-} from '@angular/core';
-import { DUMMY_USERS } from '../dummy-user';
+import { Component, computed, input, output } from '@angular/core';
 import { User } from './user.model';
-import { CardComponent } from '../shared/card/card';
 
 @Component({
   selector: 'app-user',
-  imports: [CardComponent],
+  //imports: [CardComponent],
   templateUrl: './user.html',
+  standalone: false,
 })
 // !using this this will have some value
 export class UserComponenet {
