@@ -46,9 +46,7 @@
   </ng-template> -->
 
   @if (selectedUser){
-  <app-tasks
-    [selectedUser]="selectedUser ? selectedUser.name : 'No User Selected'"
-  ></app-tasks>
+  <app-tasks [selectedUser]="selectedUser"></app-tasks>
   } @else {
   <p
     id="fallback"

@@ -6,7 +6,7 @@
     <h2
       class="m-0 text-[0.9rem] md:text-[1.25rem] font-bold w-[60%] [text-wrap:balance]"
     >
-      {{ selectedUser() }} Tasks
+      {{ selectedUser().name }} Tasks
     </h2>
     <menu class="m-0 p-0 md:w-auto">
       <button
@@ -22,6 +22,11 @@
   <ul
     class="list-none m-4 mt-0 p-0 flex flex-col gap-4 max-h-[50vh] overflow-auto"
   >
+    @for (task of selectedUserTasks; track $index) {
+    <li>
+      <app-task [task]="task"></app-task>
+    </li>
+    }
     <!-- <app-task> goes here -->
   </ul>
 </section>

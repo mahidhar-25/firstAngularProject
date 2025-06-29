@@ -1,0 +1,12 @@
+<article class="p-3 text-[#25113d] bg-[#bf9ee5]">
+  <h2 class="m-0 p-0 text-[1.25rem] font-[600]">{{ task().title }}</h2>
+  <time datetime="yyyy-mm-dd" class="text-[#3c2c50]">{{ task().dueDate }}</time>
+  <p class="m-0 p-0 text-[0.9rem] mt-2">{{ task().summary }}</p>
+  <p class="text-right m-0">
+    <button
+      class="text-[0.9rem] cursor-pointer bg-[#380744] text-[#decdf2] rounded-[4px] py-1 px-2 border-0 shadow-[0_1px_3px_rgba(0,0,0,0.3)] transition-all duration-300 ease-in-out hover:bg-[#4a0774] hover:shadow-[0_1px_6px_rgba(0,0,0,0.3)] active:bg-[#4a0774] active:shadow-[0_1px_6px_rgba(0,0,0,0.3)]"
+    >
+      Complete
+    </button>
+  </p>
+</article>
