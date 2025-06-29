@@ -1,7 +1,7 @@
 export interface TaskType {
-  id: String;
-  userId: String;
-  title: String;
-  summary: String;
-  dueDate: String;
+  id: string;
+  userId: string;
+  title: string;
+  summary: string;
+  dueDate: string;
 }

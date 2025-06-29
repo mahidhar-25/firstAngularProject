@@ -20,7 +20,7 @@ export class NewTaskComponent {
 
   onCreate() {
     this.addTask.emit({
-      id: Math.random().toString(),
+      id: new Date().toISOString(),
       title: this.enteredTitle,
       summary: this.enteredSummary,
       dueDate: this.enteredDueDate,

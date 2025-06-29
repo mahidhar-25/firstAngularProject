@@ -8,12 +8,12 @@ import {
 } from '@angular/core';
 import { DUMMY_USERS } from '../dummy-user';
 import { User } from './user.model';
+import { CardComponent } from '../shared/card/card';
 
 @Component({
   selector: 'app-user',
-  imports: [],
+  imports: [CardComponent],
   templateUrl: './user.html',
-  styleUrl: './user.css',
 })
 // !using this this will have some value
 export class UserComponenet {
