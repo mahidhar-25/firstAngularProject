@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, signal } from '@angular/core';
 import { TaskType } from './task/task.model';
 import { TaskComponment } from './task/task';
 import { User } from '../user/user.model';
@@ -10,8 +10,12 @@ import { User } from '../user/user.model';
   styleUrl: './tasks.css',
 })
 export class Tasks {
+  onComplete(taskId: String) {
+    this.tasks.set(this.tasks().filter((task) => task.id !== taskId));
+  }
+
   selectedUser = input.required<User>();
-  tasks = input<TaskType[]>([
+  tasks = signal<TaskType[]>([
     {
       id: '1',
       userId: 'u1',

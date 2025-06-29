@@ -25,6 +25,7 @@ export class UserComponenet {
   avatar = computed(() => this.user().avatar);
   name = computed(() => this.user().name);
   id = computed(() => this.user().id);
+  selected = input.required<boolean>();
 
   //@Output() selectedId:string = new EventEmitter<string>();
   selectedId = output<string>();

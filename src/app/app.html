@@ -23,7 +23,11 @@
     </li> -->
     @for (user of users; track user.id) {
     <li class="w-full min-w-[10rem]">
-      <app-user [user]="user" (selectedId)="onSelectUser($event)"></app-user>
+      <app-user
+        [user]="user"
+        [selected]="user.id === selectedUserId"
+        (selectedId)="onSelectUser($event)"
+      ></app-user>
     </li>
     }
   </ul>

@@ -7,14 +7,7 @@ import { CommonModule, NgFor } from '@angular/common';
 import { Tasks } from './tasks/tasks';
 @Component({
   selector: 'app-root',
-  imports: [
-    RouterOutlet,
-    HeaderComponent,
-    UserComponenet,
-    CommonModule,
-    Tasks,
-    NgFor,
-  ],
+  imports: [RouterOutlet, HeaderComponent, UserComponenet, CommonModule, Tasks],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
