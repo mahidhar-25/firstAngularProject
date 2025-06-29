@@ -3,7 +3,7 @@
   class="h-[40%] w-[90%] max-w-xl bg-[#433352] rounded-md border-none shadow-lg p-4 md:p-8 relative items-center"
 >
   <h2 class="m-0 mb-4 text-[#d0c2e1] text-xl font-semibold">Add Task</h2>
-  <form>
+  <form (ngSubmit)="onCreate()">
     <p class="mb-4">
       <label for="title" class="block text-[#ab9ac0] font-bold text-sm mb-1"
         >Title</label
@@ -54,7 +54,6 @@
       <button
         type="submit"
         class="bg-[#9c73ca] rounded px-5 py-1 shadow-md transition-colors duration-300 ease-in-out hover:bg-[#895cce] active:bg-[#895cce]"
-        (click)="onCreate()"
       >
         Create
       </button>
