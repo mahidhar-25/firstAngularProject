@@ -2,10 +2,11 @@ import { Component, input, signal } from '@angular/core';
 import { TaskType } from './task/task.model';
 import { TaskComponment } from './task/task';
 import { User } from '../user/user.model';
+import { NewTaskComponent } from './new-task/new-task';
 
 @Component({
   selector: 'app-tasks',
-  imports: [TaskComponment],
+  imports: [TaskComponment, NewTaskComponent],
   templateUrl: './tasks.html',
   styleUrl: './tasks.css',
 })
@@ -13,7 +14,7 @@ export class Tasks {
   onComplete(taskId: String) {
     this.tasks.set(this.tasks().filter((task) => task.id !== taskId));
   }
-
+  isAddingTask = false;
   selectedUser = input.required<User>();
   tasks = signal<TaskType[]>([
     {
@@ -56,7 +57,20 @@ export class Tasks {
   //   return this.tasks().filter((task) => task.startsWith(this.selectedUser()));
   // }
 
-  onAddTask() {
+  onOpenAddTask() {
+    this.isAddingTask = true;
+  }
+  onAddTask(newTask: Omit<TaskType, 'userId'>) {
+    this.isAddingTask = false;
+    this.tasks.update((tasks) => [
+      ...tasks,
+      { ...newTask, userId: this.selectedUser().id },
+    ]);
     // Logic to add a new task
+  }
+
+  oncloseDailog(close: boolean) {
+    console.log(close);
+    this.isAddingTask = !close;
   }
 }

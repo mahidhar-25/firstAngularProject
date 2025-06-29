@@ -1,3 +1,11 @@
+@if(isAddingTask){
+<div>
+  <app-new-task
+    (closeDailog)="oncloseDailog($event)"
+    (addTask)="onAddTask($event)"
+  />
+</div>
+}@else {
 <section
   id="tasks"
   class="flex flex-col gap-4 p-4 rounded-md max-h-[60vh] overflow-auto bg-[#3a2c54]"
@@ -10,7 +18,7 @@
     </h2>
     <menu class="m-0 p-0 md:w-auto">
       <button
-        (click)="onAddTask()"
+        (click)="onOpenAddTask()"
         class="cursor-pointer text-[0.9rem] text-[#150722] bg-[#9965dd] border-0 px-[0.8rem] py-[0.35rem] rounded-md shadow-[0_1px_6px_rgba(0,0,0,0.1)] hover:bg-[#a565dd] active:bg-[#a565dd]"
       >
         Add Task
@@ -30,3 +38,4 @@
     <!-- <app-task> goes here -->
   </ul>
 </section>
+}

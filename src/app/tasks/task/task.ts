@@ -8,6 +8,7 @@ import { TaskType } from './task.model';
 })
 export class TaskComponment {
   task = input.required<TaskType>();
+  //@output() complete = new EventEmitter<string>();
   complete = output<String>();
   onComplete() {
     this.complete.emit(this.task().id);
